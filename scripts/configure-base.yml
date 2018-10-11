@@ -3,8 +3,9 @@
 - hosts: slaves
   sudo: yes
   vars:
-    git_marvin_directory: /home/slave/repos/marvin
-    marvin_github_repo_url: https://github.com/laravel/laravel.git
+    git_marvin_directory: /root/repos/marvin
+    marvin_github_repo_url: https://github.com/myrtleTree33/marvin.git
+    sudo_username: root
 
   tasks:
     - name: install packages
@@ -12,21 +13,27 @@
       with_items:
         - git
         - vim
-    # - name: Clone git repository
-    #   git: >
-    #     dest={{ git_marvin_directory }}
-    #     repo={{ marvin_github_repo_url }}
-    #     update=no
-    #   sudo: yes
-    #   sudo_user: www-data
+        - screen
+        - python-pip
+        - python3-pip
+    - name: Clone git repository
+      git: >
+        dest={{ git_marvin_directory }}
+        repo={{ marvin_github_repo_url }}
+        update=no
+      sudo: yes
+      sudo_user: "{{ sudo_username }}"
 
-    # - name: build the image
-    #   docker_image: >
-    #     name=slave
-    #     tag=1.0.0
-    #     path={{ git_marvin_directory }}
-    #     state=present
+    - name: Install python dependencies
+      pip:
+        name: docker
 
+    - name: build the image
+      docker_image: >
+        name=slave
+        tag=1.0.0
+        path="{{ git_marvin_directory }}"
+        state=present
     # handlers:
     #   ---
 
