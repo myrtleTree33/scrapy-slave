@@ -1,0 +1,2 @@
+[slaves]
+your_server_ip ansible_ssh_user=sammy

@@ -1,0 +1,21 @@
+- hosts: slaves
+  sudo: yes
+
+  tasks:
+    - name: install packages
+      apt: name={{ item }} update_cache=yes state=latest
+      with_items:
+        - git
+        - vim
+
+    - name: Clone git repository
+      git: >
+        dest=/var/www/laravel
+        repo=https://github.com/laravel/laravel.git
+        update=no
+      sudo: yes
+      sudo_user: www-data
+
+    handlers:
+      ---
+
