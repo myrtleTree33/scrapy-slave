@@ -1,5 +1,8 @@
 - hosts: slaves
   sudo: yes
+  vars:
+    git_marvin_directory: /home/slave/repos/marvin
+    marvin_github_repo_url: https://github.com/laravel/laravel.git
 
   tasks:
     - name: install packages
@@ -10,11 +13,18 @@
 
     - name: Clone git repository
       git: >
-        dest=/var/www/laravel
-        repo=https://github.com/laravel/laravel.git
+        dest={{ git_marvin_directory }}
+        repo={{ marvin_github_repo_url }}
         update=no
       sudo: yes
       sudo_user: www-data
+
+    - name: build the image
+      docker_image: >
+        name=slave
+        tag=1.0.0
+        path={{ git_marvin_directory }}
+        state=present
 
     handlers:
       ---
