@@ -1,3 +1,7 @@
+## This playbook configures Marvin slaves for setup.
+
+- import_playbook: configure-base.yml
+
 - hosts: slaves
   sudo: yes
   vars:

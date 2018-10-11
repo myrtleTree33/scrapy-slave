@@ -1,2 +1,6 @@
+## Custom /etc/ansible/hosts file used
+## As we do not wish to pollute global namespace,
+## We place hosts here.
+
 [slaves]
-your_server_ip ansible_ssh_user=sammy
+127.0.0.1 ansible_ssh_user=sammy
