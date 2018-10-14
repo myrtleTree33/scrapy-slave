@@ -1,0 +1,16 @@
+# tasks file for slave-update
+
+- name: Clone git repository
+  git:
+    dest: "{{ git_marvin_directory }}"
+    repo: "{{ marvin_github_repo_url }}"
+    update: yes
+  sudo: yes
+  sudo_user: "{{ sudo_username }}"
+
+- name: build the image
+  docker_image:
+    name: slave
+    path: /root/repos/marvin
+    state: present
+    force: yes # Always build the image when run
