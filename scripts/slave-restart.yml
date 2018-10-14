@@ -1,0 +1,8 @@
+## This playbook configures Marvin slaves for setup.
+
+- hosts: slaves
+  sudo: yes
+  vars_files: config-vars.yml
+
+  roles:
+    - slave-restart

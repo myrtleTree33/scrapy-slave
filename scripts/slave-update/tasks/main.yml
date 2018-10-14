@@ -1,5 +1,13 @@
 # tasks file for slave-update
 
+- name: clean unused docker containers
+  shell: docker rm -v $(docker ps -a -q -f status=exited)
+  ignore_errors: true
+
+- name: clean unused docker images
+  shell: docker rmi $(docker images -f "dangling=true" -q)
+  ignore_errors: true
+
 - name: Clone git repository
   git:
     dest: "{{ git_marvin_directory }}"
