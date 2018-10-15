@@ -1,0 +1,24 @@
+# tasks file for slave-update
+
+- name: clean unused docker containers
+  shell: docker rm -v $(docker ps -a -q -f status=exited)
+  ignore_errors: true
+
+- name: clean unused docker images
+  shell: docker rmi $(docker images -f "dangling=true" -q)
+  ignore_errors: true
+
+- name: Clone git repository
+  git:
+    dest: "{{ git_duck_directory }}"
+    repo: "{{ duck_github_repo_url }}"
+    update: yes
+  sudo: yes
+  sudo_user: "{{ sudo_username }}"
+
+- name: build the image
+  docker_image:
+    name: slave
+    path: /root/repos/duck
+    state: present
+    force: yes # Always build the image when run

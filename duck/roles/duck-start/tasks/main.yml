@@ -1,0 +1,11 @@
+## Starts n number of instances
+
+- name: Start duck
+  docker_container:
+    name: "Duck Container"
+    recreate: yes
+    image: duck
+    pull: false # Use local repository build image
+    env:
+      UPDATE_INTERVAL: "{{ update_interval_ms }}"
+      MONGO_URI: "{{ mongo_db_uri }}"

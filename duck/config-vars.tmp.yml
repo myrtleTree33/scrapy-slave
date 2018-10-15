@@ -1,0 +1,7 @@
+## Rename this file to config-vars.yml
+
+git_duck_directory: /root/repos/duck
+duck_github_repo_url: https://github.com/myrtleTree33/duck.git
+sudo_username: root
+mongo_db_uri: <INSERT MONGO URL HERE>
+update_interval_ms: 600000
