@@ -1,0 +1,8 @@
+## Rename this file to config-vars.yml
+
+git_marvin_directory: /root/repos/marvin
+marvin_github_repo_url: https://github.com/myrtleTree33/marvin.git
+sudo_username: root
+mongo_db_uri: <INSERT MONGO URL HERE>
+num_nodes: 20
+num_instances: 10

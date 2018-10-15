@@ -1,0 +1,7 @@
+## Rename this file to hosts
+
+[slaves]
+<DOCKER INSTANCE IP HERE> ansible_ssh_user=root
+
+[slaves:vars]
+ansible_python_interpreter=/usr/bin/python3
