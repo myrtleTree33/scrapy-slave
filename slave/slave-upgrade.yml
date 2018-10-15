@@ -1,0 +1,9 @@
+## This playbook updates and restarts the instance
+
+- hosts: slaves
+  sudo: yes
+  vars_files: config-vars.yml
+
+  roles:
+    - ./roles/slave-update
+    - ./roles/slave-restart

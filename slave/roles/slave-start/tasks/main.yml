@@ -1,17 +1,13 @@
-# tasks file for slave-restart
+## Starts n number of instances
 
-- name: stop all docker containers
-  shell: docker stop $(docker ps -a -q)
-  ignore_errors: true
-
-- name: Start 4 load-balanced containers
+- name: Start {{ num_instances }} load-balanced containers
   docker_container:
     name: "container{{ item }}"
     recreate: yes
     image: slave
-    command: sleep 1s
+    command: sleep 20ms
     pull: false # Use local repository build image
     env:
       NUM_NODES: "{{ num_nodes }}"
       MONGO_URI: "{{ mongo_db_uri }}"
-  with_sequence: count=4
+  with_sequence: count={{ num_instances }}

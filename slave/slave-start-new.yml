@@ -5,4 +5,6 @@
   vars_files: config-vars.yml
 
   roles:
-    - slave-update
+    - ./roles/slave-configure
+    - ./roles/slave-update
+    - ./roles/slave-restart
