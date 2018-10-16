@@ -18,7 +18,7 @@
 
 - name: build the image
   docker_image:
-    name: slave
+    name: duck
     path: /root/repos/duck
     state: present
     force: yes # Always build the image when run
