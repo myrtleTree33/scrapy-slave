@@ -2,7 +2,7 @@
 
 - name: Start duck
   docker_container:
-    name: "Duck Container"
+    name: "duck-container"
     recreate: yes
     image: duck
     pull: false # Use local repository build image
