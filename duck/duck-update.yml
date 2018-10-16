@@ -1,8 +1,8 @@
 ## This playbook updates the source code, and builds the Dockerfile to be loaded into the image.
 
-- hosts: slaves
+- hosts: mongoroot
   sudo: yes
   vars_files: config-vars.yml
 
   roles:
-    - ./roles/slave-update
+    - ./roles/duck-update

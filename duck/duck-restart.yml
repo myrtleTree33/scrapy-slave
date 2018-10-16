@@ -1,8 +1,8 @@
 ## This task restarts the docker instances on the slave.
 
-- hosts: slaves
+- hosts: mongoroot
   sudo: yes
   vars_files: config-vars.yml
 
   roles:
-    - ./roles/slave-restart
+    - ./roles/duck-restart

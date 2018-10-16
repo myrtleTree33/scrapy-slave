@@ -1,10 +1,10 @@
 ## This playbook configures Marvin slaves for setup.
 
-- hosts: slaves
+- hosts: mongoroot
   sudo: yes
   vars_files: config-vars.yml
 
   roles:
-    - ./roles/slave-configure
-    - ./roles/slave-update
-    - ./roles/slave-restart
+    - ./roles/duck-configure
+    - ./roles/duck-update
+    - ./roles/duck-restart

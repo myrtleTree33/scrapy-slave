@@ -1,9 +1,9 @@
 ## This playbook updates and restarts the instance
 
-- hosts: slaves
+- hosts: mongoroot
   sudo: yes
   vars_files: config-vars.yml
 
   roles:
-    - ./roles/slave-update
-    - ./roles/slave-restart
+    - ./roles/duck-update
+    - ./roles/duck-restart

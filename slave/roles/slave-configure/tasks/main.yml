@@ -11,6 +11,7 @@
     - apt-transport-https
     - ca-certificates
     - curl
+    - python3-docker
 
 - name: Add Docker GPG key
   apt_key: url=https://download.docker.com/linux/ubuntu/gpg
