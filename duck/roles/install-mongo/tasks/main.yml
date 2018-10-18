@@ -1,0 +1,35 @@
+# tasks file for install-mongo
+
+- name: MongoDB | Import the public key used by the package management system
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 7F0CEB10
+- name: MongoDB | Create a list file
+  lineinfile:
+    dest: /etc/apt/sources.list.d/mongodb-org-3.0.list
+    line: "deb http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.0 multiverse"
+    state: present
+    create: yes
+
+# Register LC_ALL=C as needed by Mongo
+- name: Adding the path in the bashrc files
+  lineinfile: dest=/root/.bashrc line='export LC_ALL=C' insertafter='EOF' state=present
+- shell: . /root/.bashrc && echo $LC_ALL
+  args:
+    executable: /bin/bash
+  register: myvar
+
+- name: MongoDB | Install the packages
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - mongodb-org
+    - mongodb-org-server
+    - mongodb-org-shell
+    - mongodb-org-mongos
+    - mongodb-org-tools
+  notify:
+    - restart mongodb
+- name: MongoDB | Listen to all interfaces
+  lineinfile: "dest=/etc/mongod.conf regexp='^  bindIp: 127.0.0.1' state=absent"
+  notify:
+    - restart mongodb
