@@ -21,3 +21,10 @@
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
 - name: Install Docker
   apt: name=docker-ce
+
+- name: Configure MongoDB to accept hosts from anywhere
+  lineinfile:
+    dest: /etc/mongodb.conf
+    regexp: "^(.*)bind_ip = (.*)$"
+    line: "bind_ip = 0.0.0.0"
+    backrefs: yes
