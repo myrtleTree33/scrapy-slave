@@ -1,6 +1,0 @@
-# handlers file for install-mongo
-
-- name: restart mongodb
-  service:
-    name: mongod
-    state: restarted
