@@ -1,0 +1,8 @@
+## This task restarts the docker instances on the slave.
+
+- hosts: slaves
+  sudo: yes
+  vars_files: config-vars.yml
+
+  roles:
+    - ./roles/slave-stop

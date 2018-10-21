@@ -10,4 +10,7 @@
     env:
       NUM_NODES: "{{ num_nodes }}"
       MONGO_URI: "{{ mongo_db_uri }}"
+      MIN_INTERVAL: "{{ min_interval }}"
+      RAND_INTERVAL: "{{ rand_interval }}"
+      JOB_INTERVAL_MS: "{{ job_interval_ms }}"
   with_sequence: count={{ num_instances }}
