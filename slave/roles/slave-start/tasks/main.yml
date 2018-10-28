@@ -13,4 +13,8 @@
       MIN_INTERVAL: "{{ min_interval }}"
       RAND_INTERVAL: "{{ rand_interval }}"
       JOB_INTERVAL_MS: "{{ job_interval_ms }}"
+      DEFAULT_CACHE_TIME_MS: "{{ default_cache_time_ms }}"
+      MIN_CACHE_TIME_MS: "{{ min_cache_time_ms }}"
+      MAX_CACHE_TIME_MS: "{{ max_cache_time_ms }}"
+      MAX_DIFF_TOLERANCE: "{{ max_diff_tolerance }}"
   with_sequence: count={{ num_instances }}
