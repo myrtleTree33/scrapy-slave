@@ -1,8 +1,15 @@
 ## Rename this file to config-vars.yml
 
 git_marvin_directory: /root/repos/marvin
-marvin_github_repo_url: https://github.com/myrtleTree33/marvin.git
+marvin_github_repo_url: https://github.com/myrtleTree33/marvin-v2.git
 sudo_username: root
 mongo_db_uri: <INSERT MONGO URL HERE>
-num_nodes: 20
-num_instances: 10
+num_nodes: 10
+num_instances: 2
+min_interval: 20
+rand_interval: 20
+job_interval_ms: 20
+default_cache_time_ms: 7200000
+min_cache_time_ms: 7200000
+max_cache_time_ms: 172800000
+max_diff_tolerance: 0.12
